@@ -16,15 +16,10 @@ public class Main {
         if (choice == 1) {
             System.out.print("Enter User ID: ");
             String userID = scanner.nextLine();
-
             System.out.print("Enter Password: ");
             String password = scanner.nextLine();
-
-            if (Authentcation.checkpassword(userID, password)) {
-                System.out.println("Login successful!");
-            } else {
-                System.out.println("Invalid credentials. Login failed.");
-            }
+            User user = new User(userID, password);
+            user.login(userID, password);
         }
         else if (choice == 2) {
             System.out.print("Enter User ID: ");

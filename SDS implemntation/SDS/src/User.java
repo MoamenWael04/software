@@ -11,10 +11,12 @@ public class User {
         this.email = email;
         this.password = password;
     }
+    public User(String userID, String password) {
+        this.UserID = userID;
+        this.password = password;
+    }
 
-
-    public void login(String UID , String pass)
-    {
+    public void login(String UID , String pass) {
         if (Authentcation.checkpassword(UID,pass))
         {
             System.out.println("Login Successful");
