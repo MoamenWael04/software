@@ -16,18 +16,20 @@ public class User {
         this.password = password;
     }
 
-    public void login(String UID , String pass) {
+    public boolean login(String UID, String pass) {
         if (Authentcation.checkpassword(UID,pass))
         {
             System.out.println("Login Successful");
+            return true;
         }
         else
         {
             System.out.println("Login Failed");
+            return false;
         }
     }
 
-    public static User signup(String UID, String pass, String Uname, String Email) {
+    public User signup(String UID, String pass, String Uname, String Email) {
         return Authentcation.createUser(UID, pass, Uname, Email);
     }
 }

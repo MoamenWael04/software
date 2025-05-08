@@ -45,9 +45,8 @@ public class Authentcation {
                 System.out.println("User ID already exists!");
                 return null;
             }
-
-            // Try to add credentials to file
             if (addCredentialsToFile(userID, password)) {
+                System.out.println("Signup successful!");
                 return new User(userID, userName, email, password);
             } else {
                 System.out.println("Failed to save credentials");
