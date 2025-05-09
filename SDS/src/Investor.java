@@ -70,12 +70,14 @@ public class Investor extends User {
                         break;
 
                     case 4:
+                        manager.displaylist();
                         System.out.print("Enter asset ID to edit: ");
                         String editId = scanner.nextLine();
                         manager.editasset(editId);
                         break;
 
                     case 5:
+                        manager.displaylist();
                         System.out.print("Enter asset ID to remove: ");
                         String removeId = scanner.nextLine();
                         manager.removeAsset(removeId);

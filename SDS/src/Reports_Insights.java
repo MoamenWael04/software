@@ -31,6 +31,8 @@ public class Reports_Insights {
                         break;
 
                     case 2:
+                        displayReport();
+                        System.out.println();
                         System.out.print("Enter format (PDF or Excel): ");
                         String format = scanner.nextLine();
                         exportReport(format);

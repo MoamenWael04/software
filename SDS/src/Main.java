@@ -54,7 +54,6 @@ public class Main {
                 scanner.nextLine(); // Clear the invalid input
             }
         }
-
         scanner.close();
     }
 }

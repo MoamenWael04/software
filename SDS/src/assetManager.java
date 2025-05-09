@@ -51,6 +51,7 @@ public class assetManager {
         if (assets.isEmpty()) {
             System.out.println("Asset list is empty");
         } else {
+            System.out.println();
             System.out.println("Asset List:");
             for (Asset asset : assets)
             {
