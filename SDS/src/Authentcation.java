@@ -4,9 +4,19 @@ import java.io.IOException;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
-
+/**
+ * Provides authentication and user creation functionality for the InvestEase system.
+ * Handles credential verification and user registration.
+ */
 public class Authentcation {
 
+    /**
+     * Checks if the provided user ID and password match a stored credential.
+     *
+     * @param UID  The user ID to check
+     * @param pass The password to check
+     * @return true if credentials match, false otherwise
+     */
     public static boolean checkpassword(String UID, String pass) {
         String filePath = "credentials.txt";
 
@@ -31,9 +41,16 @@ public class Authentcation {
         return false;  // No matching credentials found
     }
 
-
-
-
+    /**
+     * Verifies that the provided user credentials meet system requirements.
+     * Validates userID, password, userName, and email format.
+     *
+     * @param userID   The user ID to verify
+     * @param password The password to verify
+     * @param userName The user name to verify
+     * @param email    The email to verify
+     * @return true if all credentials are valid, false otherwise
+     */
     public static boolean verifycredentials(String userID, String password, String userName, String email) {
         boolean isValid = true;
 
@@ -59,6 +76,16 @@ public class Authentcation {
 
         return isValid;
     }
+
+    /**
+     * Creates a new user if the credentials are valid and the user doesn't already exist.
+     *
+     * @param userID   The user ID for the new user
+     * @param password The password for the new user
+     * @param userName The name for the new user
+     * @param email    The email for the new user
+     * @return A new User object if creation was successful, null otherwise
+     */
     public static User createUser(String userID, String password, String userName, String email) {
         if (verifycredentials(userID, password, userName, email)) {
             // First check if user already exists
@@ -79,12 +106,13 @@ public class Authentcation {
         }
     }
 
-
-
-
-
-
-
+    /**
+     * Adds user credentials to the credentials file.
+     *
+     * @param userID   The user ID to add
+     * @param password The password to add
+     * @return true if credentials were successfully saved, false otherwise
+     */
     private static boolean addCredentialsToFile(String userID, String password) {
         String filePath = "credentials.txt";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) { // true for append mode , Add a new line if file is not empty
@@ -97,5 +125,4 @@ public class Authentcation {
             return false;
         }
     }
-
 }

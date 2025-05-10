@@ -4,13 +4,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+/**
+ * Provides financial reporting and insight functionality for the InvestEase system.
+ * Handles generating investment reports and exporting them to different formats.
+ */
 public class Reports_Insights {
+    /** The asset manager from which to derive report data */
     private assetManager manager;
 
+    /**
+     * Constructs a Reports_Insights object with the specified asset manager.
+     *
+     * @param manager The asset manager to use for reports
+     */
     public Reports_Insights(assetManager manager) {
         this.manager = manager;
     }
+
+    /**
+     * Displays the reports menu and handles user navigation through reporting options.
+     */
     public void reportMenu() {
         Scanner scanner = new Scanner(System.in);
         int choice;
@@ -51,6 +64,9 @@ public class Reports_Insights {
         }
     }
 
+    /**
+     * Displays a summary report of all investments and their total value.
+     */
     public void displayReport() {
         ArrayList<Asset> assets = manager.getAssets();
 
@@ -74,6 +90,12 @@ public class Reports_Insights {
         System.out.println("Total Portfolio Value: " + totalValue);
     }
 
+    /**
+     * Exports the investment report to a file in the specified format.
+     * Currently supports simulated PDF (as text) and Excel (as CSV) formats.
+     *
+     * @param format The format to export ("PDF" or "Excel")
+     */
     public void exportReport(String format) {
         ArrayList<Asset> assets = manager.getAssets();
         if (assets.isEmpty()) {
