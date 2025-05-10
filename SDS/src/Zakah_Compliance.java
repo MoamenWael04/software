@@ -4,28 +4,13 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-/**
- * Provides zakat (Islamic charity) calculation and reporting functionality.
- * Allows users to calculate zakat on their assets and generate zakat reports.
- */
-
 public class Zakah_Compliance {
-    /** The asset manager from which to derive zakat data */
     private assetManager manager;
-
-    /**
-     * Constructs a Zakah_Compliance object with the specified asset manager.
-     *
-     * @param manager The asset manager to use for zakat calculations
-     */
 
     public Zakah_Compliance(assetManager manager) {
         this.manager = manager;
     }
 
-    /**
-     * Displays the zakat menu and handles user navigation through zakat options.
-     */
     public void zakatMenu() {
         Scanner scanner = new Scanner(System.in);
         while(true)
@@ -57,9 +42,7 @@ public class Zakah_Compliance {
             }
         }
     }
-    /**
-     * offers to user to calculate the summation of the zakat
-     */
+
 
     public void calculateZakatForAllAssets() {
         ArrayList<Asset> assets = manager.getAssets();
@@ -80,9 +63,6 @@ public class Zakah_Compliance {
 
         System.out.println("Total Zakat Due: " + totalZakat);
     }
-    /**
-     * offers to user to calculate a specific zakat by ID user provides
-     */
     private void calculateZakatForAssetByID() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the Asset ID: ");
@@ -109,10 +89,6 @@ public class Zakah_Compliance {
             System.out.println("Asset not found. Please check the ID and try again.");
         }
     }
-
-    /**
-     * generates a report and type of report based on what does the user needs (PDF / Excel)
-     */
 
     public void generateZakatTextReport() {
         ArrayList<Asset> assets = manager.getAssets();

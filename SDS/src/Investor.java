@@ -1,39 +1,14 @@
 import java.util.Scanner;
 
-/**
- * Represents an investor user of the InvestEase system.
- * Extends the base User class with investor-specific functionality.
- */
 public class Investor extends User {
-
-    /**
-     * Constructs a new Investor with full user details.
-     *
-     * @param userID   The user ID for this investor
-     * @param userName The name of this investor
-     * @param email    The email of this investor
-     * @param password The password for this investor
-     */
     Investor(String userID, String userName, String email, String password)
     {
         super(userID, userName, email, password);
     }
-
-    /**
-     * Constructs a new Investor with minimal details for login.
-     *
-     * @param userID   The user ID for this investor
-     * @param password The password for this investor
-     */
     Investor(String userID, String password)
     {
         super(userID, password);
     }
-
-    /**
-     * Displays the investor dashboard and handles user navigation through the system.
-     * Provides access to asset management, zakat calculations, and financial reports.
-     */
     public void viewDashboard() {
         Scanner scanner = new Scanner(System.in);
         boolean mainRunning = true;
@@ -41,12 +16,14 @@ public class Investor extends User {
 
         while (mainRunning)
         {
+            System.out.println("=============================");
             System.out.println( "Welcome " + this.UserID);
             System.out.println("Please select an option");
             System.out.println("1- Asset managment");
             System.out.println("2- zakat & Compliance");
             System.out.println("3- Reports & Insights");
-            System.out.println("4- Logout");
+            System.out.println("4- Goals Management");
+            System.out.println("5- Logout");
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
             if (choice == 1) {
@@ -58,7 +35,7 @@ public class Investor extends User {
                     System.out.println("3. Search for an asset");
                     System.out.println("4. Edit an asset");
                     System.out.println("5. Remove an asset");
-                    System.out.println("6. Exit");
+                    System.out.println("6. Back to Main Menu");
                     System.out.print("Enter your choice: ");
 
                     int choice2 = scanner.nextInt();
@@ -76,7 +53,7 @@ public class Investor extends User {
                             System.out.print("Price: ");
                             double price = scanner.nextDouble();
 
-                            Asset newAsset = new Asset().setasset(id, type, quantity, price);
+                            Asset newAsset = new Asset().setAsset(id, type, quantity, price);
                             if (manager.addAsset(newAsset)) {
                                 continue;
                             } else {
@@ -110,7 +87,7 @@ public class Investor extends User {
 
                         case 6:
                             running = false;
-                            System.out.println("Thank you for using Asset Management System!");
+                            System.out.println("Returning to main menu...");
                             break;
 
                         default:
@@ -129,7 +106,12 @@ public class Investor extends User {
                 Reports_Insights reports = new Reports_Insights(manager);
                 reports.reportMenu();
             }
-            else if (choice == 4) {
+            else if (choice == 4)
+            {
+                financialGoals goals = new financialGoals();
+                goals.goalsMenu();
+            }
+            else if (choice == 5) {
                 mainRunning = false;
             }
             else {
@@ -138,6 +120,6 @@ public class Investor extends User {
 
         }
 
-        scanner.close();
-    }
+            scanner.close();
+        }
 }

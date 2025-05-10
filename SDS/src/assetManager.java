@@ -1,53 +1,30 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * Manages a collection of financial assets.
- * Provides functionality to add, remove, edit, display, and search for assets.
- */
 public class assetManager {
-    /** Collection of assets managed by this class, with a maximum capacity of 15 */
-    private ArrayList<Asset> assets = new ArrayList<>(15);
+    private ArrayList<Asset> assets = new ArrayList<>();
 
-    /**
-     * Constructs a new assetManager with a default set of 5 assets.
-     */
     public assetManager()
     {
-        assets.add(new Asset().setasset("A001", "gold", 2.5, 3000.0));
-        assets.add(new Asset().setasset("A002", "crypto", 1.2, 18000.0));
-        assets.add(new Asset().setasset("A003", "stock", 10, 150.0));
-        assets.add(new Asset().setasset("A004", "real estate", 1, 250000.0));
-        assets.add(new Asset().setasset("A005", "gold", 5, 2900.0));
+        assets.add(new Asset().setAsset("A001", "gold", 2.5, 3000.0));
+        assets.add(new Asset().setAsset("A002", "crypto", 1.2, 18000.0));
+        assets.add(new Asset().setAsset("A003", "stock", 10, 150.0));
+        assets.add(new Asset().setAsset("A004", "real estate", 1, 250000.0));
+        assets.add(new Asset().setAsset("A005", "gold", 5, 2900.0));
+
     }
 
-    /**
-     * Adds a new asset to the collection if it's valid and there's capacity.
-     *
-     * @param asset The asset to add
-     * @return true if the asset was added successfully, false otherwise
-     */
     public boolean addAsset(Asset asset) {
-        if (assets.size() < 15)
+        if(asset.verifyAsset())
         {
-            if(asset.verifyAsset())
-            {
-                assets.add(asset);
-                System.out.println("Asset added successfully");
+            assets.add(asset);
+            System.out.println("Asset added successfully");
                 return true;
-            }
-            else
-                return false;
         }
-        System.out.println("Asset list is full");
-        return false;
+        else
+            return false;
     }
 
-    /**
-     * Finds and displays an asset with the specified ID.
-     *
-     * @param assetID The ID of the asset to find
-     */
     public void pickAsset(String assetID) {
         boolean flag = false; // track if asset was found
         for (Asset asset : assets) {
@@ -64,9 +41,6 @@ public class assetManager {
         }
     }
 
-    /**
-     * Displays all assets in the collection.
-     */
     public void displaylist()
     {
         if (assets.isEmpty()) {
@@ -81,11 +55,6 @@ public class assetManager {
         }
     }
 
-    /**
-     * Allows editing the type, quantity, or price of an asset with the specified ID.
-     *
-     * @param assetID The ID of the asset to edit
-     */
     public void editasset(String assetID) {
         boolean found = false; // Track if asset was found
         for (Asset asset : assets) {
@@ -149,11 +118,6 @@ public class assetManager {
         }
     }
 
-    /**
-     * Removes an asset with the specified ID from the collection.
-     *
-     * @param assetID The ID of the asset to remove
-     */
     public void removeAsset(String assetID) {
         boolean found = false;
         for (Asset asset : assets) {
@@ -169,12 +133,6 @@ public class assetManager {
             System.out.println("Asset not found");
         }
     }
-
-    /**
-     * Gets the collection of assets managed by this class.
-     *
-     * @return The ArrayList of assets
-     */
     public ArrayList<Asset> getAssets() {
         return assets;
     }

@@ -1,20 +1,10 @@
 import java.util.Scanner;
 
-/**
- * The main entry point for the InvestEase application.
- * Handles login, signup, and program initialization.
- */
 public class Main {
-    /**
-     * The main method that starts the InvestEase application.
-     * Presents a menu for login, signup, or exit.
-     *
-     * @param args Command line arguments (not used)
-     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        while(true) {  // Infinite for loop
+        while(true) {
             System.out.println("Welcome to InvestEase!");
             System.out.println("------------------------");
             System.out.println(" Select 1 to login ");
